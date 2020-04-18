@@ -25,7 +25,7 @@ def main():
             url = urllib.parse.urljoin(base_url,link['href'])
             urls.append(url)
     
-    print('Staff headers found:')
+    print('Staff emails found:')
     for url in urls:
         print(get_details(url))
     
@@ -44,6 +44,11 @@ def get_details(url):
         print('Error getting detail from', url)
         return 'No content'
     header = content.find('h1')
-    return header.get_text()
+    links = content.find_all('a')
+    for link in links:
+        if link.has_attr('href') and link['href'].startswith('mailto:'):
+            email = link.get_text()
+            return header.get_text() + ': ' + email
+    return header.get_text() + ' (no email found)'
 
 main()
