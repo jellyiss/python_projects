@@ -64,8 +64,4 @@ def get_details(url):
             return header.get_text() + ': ' + email
     return header.get_text() + ' (no email found)'
 
-start = datetime.now().timestamp()
 main()
-end = datetme.now().timestamp()
-duration = end - start
-print("Processing time = " = str(duration))
