@@ -30,8 +30,9 @@ def main():
     
     print('Staff emails found:')
     
-    mypool = Pool()
-    mypool.map(print_details, urls)
+    if __name__ == '__main__':
+        mypool = Pool()
+        mypool.map(print_details, urls)
       
     
 def fix_encoding(url):
