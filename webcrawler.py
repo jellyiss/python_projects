@@ -26,7 +26,7 @@ def main():
             base_url = 'http://wa.amu.edu.pl'
             url = urllib.parse.urljoin(base_url,link['href'])
             encoded_url = fix_encoding(url)
-            urls.append(url)
+            urls.append(encoded_url)
     
     print('Staff emails found:')
     
@@ -36,10 +36,10 @@ def main():
       
     
 def fix_encoding(url):
-    compoments = urllib.parse.urlsplit(url)
-    compoments = list(compoments)
-    compoments[2] = urllib.parse.quote(compoments[2])
-    return urllib.parse.urlunsplit(compoments)
+    components = urllib.parse.urlsplit(url)
+    components = list(components)
+    components[2] = urllib.parse.quote(components[2])
+    return urllib.parse.urlunsplit(components)
     
     
 def get_content(url):
@@ -49,7 +49,7 @@ def get_content(url):
     return doc.find(id='tresc_wlasciwa')
 
 def print_details(url):
-    print(get_details(urls))
+    print(get_details(url))
     
 def get_details(url):
     try:
