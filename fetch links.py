@@ -21,12 +21,15 @@ def extract(url):
 
 def main():
     
-    url = input("Place your url here")
+    url = input("Place your url here: ")
     print( "Extracting...")
     
     thelist = extract(url)
     
     for li_anc in thelist:
         print()
-        for nr, li in enumerate(li_list, 1):
+        for nr, li in enumerate(li_anc, 1):
             print(f"{nr}. {li.text}")
+
+if __name__ == "__main__":
+    main()
