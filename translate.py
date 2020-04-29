@@ -7,7 +7,7 @@ Created on Wed Apr 29 21:22:46 2020
 
 from googletrans import Translator
 import requests
-
+import json
 
 def googletrans():
     translator = Translator()
@@ -20,6 +20,8 @@ def piratetrans(text):
     requests.post(url, data=data)
     
     response = requests.post(url, data=data)
-    print(type(response.text))
+    json_data= json.loads(response.text)
+    print(type(json_data))
+    print(json_data['contents']['translated'])
     
 piratetrans('hello, sir')
